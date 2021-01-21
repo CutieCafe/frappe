@@ -1,0 +1,449 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lato" rel="stylesheet">
+
+        <meta content="Cutie Caf&eacute;" property="og:site_name">
+        <meta content="We brew apps you'll love." property="og:title">
+        <meta content="We brew apps you'll love. Come check out our New Jersey web development agency. If you love our work, let's get in touch." property="og:description">
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+
+        <script>
+            window.addEventListener("load", async () => {
+                let sd = new showdown.Converter();
+
+                let patrons = await (await fetch("https://xh92fbbns3.execute-api.us-east-1.amazonaws.com/dev/patron")).json();
+                document.querySelector("#patrons").innerText = patrons.map(i => i.name).join(" - ");
+
+                let rec = await (await fetch("https://getgloss.app/recent")).json();
+
+                document.querySelector("#author").innerText = rec.embed.author.name;
+                document.querySelector("#title").innerHTML = sd.makeHtml(rec.embed.title);
+                document.querySelector("#title").setAttribute("href", rec.embed.url);
+                document.querySelector("#description").innerHTML = sd.makeHtml(rec.embed.description);
+            });
+        </script>
+
+        <style>
+            body {
+                font-family: 'Fira Sans';
+            }
+
+            html, body {
+                font-size: 62.5%;
+                padding: 0;
+                margin: 0;
+            }
+
+            .slide {
+                min-width: 30%;
+                max-width: 40%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background-color: rgba(0,0,0,0.5);
+                padding-left: 2rem;
+                padding-right: 2rem;
+                position: absolute;
+                overflow: hidden;
+                color: white;
+            }
+
+            .slide.half, .accompany.half {
+                height: 50%;
+                /* min-height: 31.6rem; */
+                min-height: 50%;
+                max-height: 50%;
+            }
+
+            .slide#home {
+                position: absolute;
+                top: 0;
+                float: left;
+            }
+
+            .slide.right {
+                position: absolute;
+                right: 0;
+            }
+
+            .slide#app-1 {
+                top: 100%;
+            }
+
+            .slide#app-2 {
+                top: 150%;
+                color: white;
+            }
+
+            .slide#app-3 {
+                top: 200%;
+            }
+
+            .slide#app-4 {
+                top: 250%;
+            }
+
+            .slide#app-5 {
+                top: 300%;
+            }
+
+            .slide#app-6 {
+                top: 350%;
+            }
+            
+            .accompany {
+                width: 100%;
+                height: 100%;
+            }
+
+            .accompany#app-2-accompany {
+                font-family: 'Lato';
+            }
+            
+            .accompany#app-2-accompany > .embed {
+                background-color: 34363c;
+                border-radius: 10px;
+                position: absolute;
+                right: 15%;
+                left: 55%;
+                width: 30%;
+                top: 151%;
+                max-height: 40%;
+                font-size: 2rem;
+                color: white;
+                padding: 2%;
+                overflow: hidden;
+            }
+
+            .embed-link {
+                color: #208ec6;
+                text-decoration: none;
+            }
+
+            .slide > h2, .other > h2 {
+                font-size: 4rem;
+                margin: 0;
+            }
+
+            .slide > h1, .other > h1 {
+                font-size: 8rem;
+                margin: 0;
+            }
+
+            .other > h2 {
+                text-align: center;
+            }
+
+            .other > h1 {
+                text-align: center;
+            }
+
+            .accompany#home-accompany, .accompany#app-5-accompany {
+                background: url("https://s3.cutie.cafe/frappe/subtlepatterns.com_retina_wood.png");
+            }
+
+            .accompany#app-1-accompany {
+                background: url("https://s3.cutie.cafe/frappe/yefga9Cl6O.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .accompany#app-3-accompany {
+                background: url("https://s3.cutie.cafe/frappe/ay6CHJdFUc.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .accompany#app-4-accompany {
+                background: url("https://s3.cutie.cafe/frappe/WCt1Z9UUFF.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            #app-4 {
+                color: white;
+            }
+
+            .accompany#app-2-accompany {
+                background-color: #36393f;
+            }
+
+            .take-a-peek {
+                position: absolute;
+                font-size: 3rem;
+                text-align: center;
+                bottom: 4rem;
+            }
+
+            .button {
+                background-color: #4286f4;
+                border-radius: 10px;
+                color: rgba(255,255,255,0.7);
+                text-decoration: none;
+                font-weight: bold;
+                padding: 10px;
+                transition: 0.25s;
+                max-width: 15rem;
+                font-size: 1.5rem;
+                text-align: center;
+                display: inline;
+                margin-top: 1rem;
+            }
+
+            .button:hover {
+                background-color: #0052d8;
+                color: rgba(255,255,255,1.0);
+            }
+
+            .other {
+                width: 33%;
+                max-width: 33%;
+                min-width: 33%;
+                height: 50%;
+            }
+
+            .other-2 {
+                position: absolute;
+                left: 33%;
+            }
+
+            .other-3 {
+                position: absolute;
+                left: 66%;
+            }
+
+            .other-row {
+                position: absolute;
+                top: 250%;
+                height: 50%;
+                max-height: 50%;
+                min-height: 50%;
+            }
+
+            #app-6-accompany {
+                padding-left: 50%;
+                background-color: #f96854;
+            }
+
+            @media only screen and (max-width: 1220px){
+                .slide {
+                    position: absolute;
+                    left: 0;
+                }
+
+                .slide#app-3 {
+                    color: white;
+                }
+
+                .slide > h2 {
+                    font-size: 3rem;
+                }
+
+                .slide > h1 {
+                    font-size: 6rem;
+                }
+
+                .take-a-peek {
+                    font-size: 2rem;
+                }
+
+                .other {
+                    width: 50%;
+                    max-width: 50%;
+                    min-width: 50%;
+                }
+            }
+
+            @media only screen and (max-width: 900px){
+                .embed {
+                    display: none;
+                }
+
+                .slide {
+                    width: calc(100% - 15px);
+                    max-width: calc(100% - 15px);
+                    min-width: calc(100% - 15px);
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+
+                .slide#home, .accompany#home-accompany {
+                    min-height: 50%;
+                    height: 50%;
+                    max-height: 50%;
+                }
+
+                .slide > h2 {
+                    font-size: 2rem;
+                }
+
+                .slide > h1 {
+                    font-size: 4rem;
+                }
+
+                .take-a-peek {
+                    font-size: 2rem;
+                }
+
+                .slide#app-1 {
+                    top: 50%;
+                }
+
+                .slide#app-2 {
+                    top: 100%;
+                }
+
+                .slide#app-3 {
+                    top: 150%;
+                }
+
+                .slide#app-4 {
+                    top: 200%;
+                }
+
+                .slide#app-5 {
+                    top: 250%;
+                }
+
+                .slide#app-6 {
+                    top: 300%;
+                }
+
+                #legal {
+                    top: 350%;
+                }
+
+                body, html {
+                    overflow-x: hidden;
+                }
+
+                .other {
+                    min-width: 100%;
+                    max-width: 100%;
+                    width: 100%;
+                }
+
+                .other-2 {
+                    top: 300%;
+                }
+
+                .other-3 {
+                    top: 350%;
+                }
+
+                #patrons {
+                    display: none;
+                }
+            }
+
+            #patrons {
+                text-align: right;
+                font-size: 5em;
+                margin-left: 50%;
+            }
+
+            #legal {
+                font-size: 3em;
+                background-color: black;
+                text-align: center;
+                top: 350%;
+                color: white;
+            }
+        </style>
+
+        <title>
+            Cutie Caf&eacute; &middot; We brew apps you'll &hearts;.
+        </title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="accompany" id="home-accompany"></div>
+            <div class="slide" id="home">
+                <h2>Hey there!</h2>
+                <h1>We're Cutie Caf&eacute;.</h1>
+                <h2>We brew apps you'll &#x1F495;</h2>
+                <p class="take-a-peek">&#x2193; Come take a look or <a href="#contact">get in touch</a></p>
+            </div>
+            <div class="slide right half" id="app-1">
+                <h1>GroupBundl.es</h2>
+                <h2>Reserve, pay, and claim group buys with a few clicks.</h2>
+                <br><br>
+                <a href="https://groupbundl.es/" class="button">
+                    Visit GroupBundl.es
+                </a>
+            </div>
+            <div class="accompany half" id="app-1-accompany"></div>
+            <div class="accompany half" id="app-2-accompany">
+                <div class="embed embed">
+                    <p id="author">
+                        Humble Bundle
+                    </p>
+                    <p>
+                        <a href="https://getgloss.app/" class="embed-link" id="title" target="_blank"><b>New Humble Bundle: Humble LEGO Games Bundle</b></a>
+                    </p>
+                    <p id="description">
+                        <b>Get LEGO Worlds, LEGO City Undercover and more!</b><br><br>
+
+                        <i>Build, play, and imagine with our newest bundle from WB Games! Get games like LEGO Batman: The Videogame, LEGO City Undercover, and LEGO Worlds.</i>
+                    </p>
+                </div>
+            </div>
+            <div class="slide half" id="app-2">
+                <h1>Gloss</h1>
+                <h2>Notifications about bundles, deals, and<wbr> more via Discord or Web Push.</h2>
+                
+                <br><br>
+
+                <a href="https://getgloss.app" class="button">
+                    Get Gloss
+                </a>
+            </div>
+            <div class="slide right half" id="app-3">
+                <h1>Mannequin</h1>
+                <h2>Mod After the Collapse, a post-apocalyptic base building game.</h2>
+
+                <br><br>
+
+                <a href="https://www.anarkisgaming.com/after-the-collapse-info/" class="button">
+                    Get After the Collapse
+                </a>
+            </div>
+            <div class="accompany half" id="app-3-accompany"></div>
+
+            <div class="accompany half" id="app-4-accompany"></div>
+            <div class="slide left half" id="app-4">
+                <h1>And more</h1>
+                <a class="button" href="https://github.com/CutieCafe/twisten">twisten</a>
+                <a class="button" href="https://github.com/antigravities/libbarter">libbarter</a>
+                <a class="button" href="http://wiki.anarkisgaming.com/ug:mods">Neo SPQR</a>
+            </div>
+
+            <div class="slide right half" id="app-5">
+                <h1 id="contact">Like what we're doing?</h1>
+                <h2>Let's get in touch. <a href="https://mailhide.io/e/I6sE5">Drop us a line.</a></h2>
+            </div>
+            <div class="accompany half" id="app-5-accompany"></div>
+            
+            <div class="slide left half" id="app-6">
+                <h1 id="patreon">Thanks to our Patreon supporters</h1>
+                <h2>We wouldn't be here without you</h2>
+
+                <a href="https://www.patreon.com/bePatron?u=2948881"><img src="https://s3.cutie.cafe/patron.png"></a>
+            </div>
+            <div class="accompany half" id="app-6-accompany" style="float: right;">
+                <h1 id="patrons">
+                    &#x2615;
+                </h1>
+            </div>
+
+            <div id="legal">
+                &copy; 2019 Cutie Caf&eacute; &middot; Fresh and with &#x1F495; from New Jersey
+            </div>
+        </div>
+    </body>
+</html>
